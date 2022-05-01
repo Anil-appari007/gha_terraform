@@ -28,9 +28,13 @@ resource "aws_instance" "sample_server" {
   user_data = <<-EOF
   #!/bin/bash
   hostnamectl set-hostname sample_server
+  apt-get update
+  apt install -y nginx
+  echo "Hello World" > /var/www/html/index.html
+  service nginx restart
   EOF
 }
 output "public_ip_docker" {
-  value       = aws_instance.docker_server.public_ip
-  description = "this is docker server public ip"
+  value       = aws_instance.sample_server.public_ip
+  description = "this is sample server public ip"
 }
