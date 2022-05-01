@@ -5,6 +5,13 @@ terraform {
       version = "3.47.0"
     }
   }
+  cloud {
+    organization = "anils_test_repo"
+
+    workspaces {
+      name = "GHA_WS"
+    }
+  }
 }
 provider "aws" {
   profile = "deafult"
