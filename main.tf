@@ -30,7 +30,7 @@ resource "aws_instance" "sample_server" {
   hostnamectl set-hostname sample_server
   apt-get update
   apt install -y nginx
-  echo "Hello World DEmo1......" > /var/www/html/index.html
+  echo "Hello World DEmo1........" > /var/www/html/index.html
   service nginx restart
   EOF
 }
