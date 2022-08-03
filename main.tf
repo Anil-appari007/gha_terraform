@@ -2,26 +2,26 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "3.47.0"
+      version = "~> 3.0"
     }
   }
   cloud {
     organization = "anils_test_repo"
 
     workspaces {
-      name = "GHA_WS"
+      name = "SYSM"
     }
   }
 }
 provider "aws" {
   profile = "deafult"
-  region  = "ap-northeast-1"
+  region  = "us-east-1"
 }
 resource "aws_instance" "sample_server" {
-  ami                    = "ami-088da9557aae42f39"
+  ami                    = "ami-052efd3df9dad4825"
   instance_type          = "t2.micro"
-  key_name               = "sys"
-  vpc_security_group_ids = ["sg-0068d68db6ff4b5a6"]
+  key_name               = "anils-us-east-key1"
+  vpc_security_group_ids = ["sg-0cc2a704d5e54eca8"]
   tags = {
     Name = "sample_server"
   }
@@ -30,7 +30,7 @@ resource "aws_instance" "sample_server" {
   hostnamectl set-hostname sample_server
   apt-get update
   apt install -y nginx
-  echo "Hello World" > /var/www/html/index.html
+  echo "Hello World 1......" > /var/www/html/index.html
   service nginx restart
   EOF
 }

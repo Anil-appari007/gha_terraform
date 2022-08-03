@@ -38,4 +38,7 @@ jobs:
         continue-on-error: true
 
       - name: Terraform Apply
-        run: terraform destroy -auto-approve -input=false
+        run: terraform apply -auto-approve -input=false
+
+      # - name: Terraform Destroy
+      #   run: terraform destroy -auto-approve -input=false
